@@ -226,7 +226,11 @@ class _PagedSliverBuilderState<PageKeyType, ItemType>
                   // transitions between same Widget types, e.g., ongoing to
                   // completed.
                   key: _builderDelegate.initialAnimationOnly
-                      ? ObjectKey(pagingState.status)
+                      ? ObjectKey(
+                          pagingState.status == PagingStatus.completed
+                              ? PagingStatus.ongoing
+                              : pagingState.status,
+                        )
                       : ObjectKey(pagingState),
                   child: child,
                 ),
