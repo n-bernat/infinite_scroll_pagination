@@ -20,6 +20,7 @@ class PagedChildBuilderDelegate<ItemType> {
     this.noItemsFoundIndicatorBuilder,
     this.noMoreItemsIndicatorBuilder,
     this.animateTransitions = false,
+    this.initialAnimationOnly = false,
     this.transitionDuration = const Duration(milliseconds: 250),
   });
 
@@ -46,6 +47,9 @@ class PagedChildBuilderDelegate<ItemType> {
 
   /// Whether status transitions should be animated.
   final bool animateTransitions;
+
+  /// Whether to animate only the first state change.
+  final bool initialAnimationOnly;
 
   /// The duration of animated transitions when [animateTransitions] is `true`.
   final Duration transitionDuration;

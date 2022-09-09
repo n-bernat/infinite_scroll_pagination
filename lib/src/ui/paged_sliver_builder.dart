@@ -221,11 +221,13 @@ class _PagedSliverBuilderState<PageKeyType, ItemType>
             if (_builderDelegate.animateTransitions) {
               return SliverAnimatedSwitcher(
                 duration: _builderDelegate.transitionDuration,
-                child: Container(
+                child: KeyedSubtree(
                   // The `ObjectKey` makes it possible to differentiate
                   // transitions between same Widget types, e.g., ongoing to
                   // completed.
-                  key: ObjectKey(pagingState),
+                  key: _builderDelegate.initialAnimationOnly
+                      ? ObjectKey(pagingState.status)
+                      : ObjectKey(pagingState),
                   child: child,
                 ),
               );
